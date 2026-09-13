@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Todo AI App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="card todo-section">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Todo App</p>
+            <h1>シンプルなタスク管理</h1>
+            <p class="section-description">
+              タスクの追加・削除・状態切替と、完了状況でのフィルタができます。
+            </p>
+          </div>
+        </div>
+
+        <form id="todo-form" class="todo-form">
+          <input
+            id="todo-input"
+            type="text"
+            placeholder="新しいタスクを入力してください"
+            maxlength="120"
+            required
+          />
+          <button type="submit">追加</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="タスクフィルタ">
+            <button class="filter-btn active" data-filter="all" type="button">すべて</button>
+            <button class="filter-btn" data-filter="active" type="button">未完了</button>
+            <button class="filter-btn" data-filter="completed" type="button">完了</button>
+          </div>
+          <p id="task-summary" class="task-summary">0 件のタスク</p>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+      </section>
+
+      <section class="card assistant-section">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">AI Assistant</p>
+            <h2>生成AIアシスタント</h2>
+            <p class="section-description">
+              タスク整理、優先度づけ、作業の分解をサポートします。
+            </p>
+          </div>
+        </div>
+
+        <div class="assistant-status" id="assistant-status">
+          デモモードで動作中です。APIキーを設定すると実API連携に置き換えられます。
+        </div>
+
+        <div class="assistant-presets">
+          <button type="button" class="preset-btn" data-prompt="未完了タスクの優先順位を提案して">優先順位を提案</button>
+          <button type="button" class="preset-btn" data-prompt="タスク一覧を要約して">一覧を要約</button>
+          <button type="button" class="preset-btn" data-prompt="最も大きそうなタスクを分解して">タスクを分解</button>
+        </div>
+
+        <form id="assistant-form" class="assistant-form">
+          <textarea
+            id="assistant-input"
+            rows="4"
+            placeholder="例: 未完了タスクから今日やるべきことを提案して"
+            required
+          ></textarea>
+          <button type="submit">アシスタントに相談</button>
+        </form>
+
+        <div class="assistant-panel">
+          <h3>アシスタントの回答</h3>
+          <div id="assistant-response" class="assistant-response">
+            ここにアシスタントからの提案が表示されます。
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
